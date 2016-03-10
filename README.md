@@ -2,23 +2,13 @@
 
 ## Usage in node.js
 
-1. Add to your project's package.json
+1. Install
 
   ```
-  {
-    "dependencies": {
-      "zuid": "git+ssh://git@github.com:zesty-io/zuid-js.git#master"
-    }
-  }
+  npm install --save zesty-io/zuid-js
   ```
 
-2. Install
-
-  ```
-  npm install
-  ```
-
-3. Add to your file
+2. Add to your file
 
   ```javascript
   const Zuid = require('zuid')
