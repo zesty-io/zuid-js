@@ -46,3 +46,5 @@ Zuid.prefix = {
     MEDIA_FILE: 3
 
 };
+
+module.exports = Zuid
