@@ -1,5 +1,5 @@
 {
-  "name": "zuid-js",
+  "name": "zuid",
   "version": "1.0.0",
   "description": "",
   "main": "src/zuid.js",
@@ -10,8 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/zesty-io/zuid-js.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Andy Fleming <andy@zesty.io>",
   "bugs": {
     "url": "https://github.com/zesty-io/zuid-js/issues"
   },
