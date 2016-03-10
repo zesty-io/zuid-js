@@ -4,26 +4,26 @@
 
 1. Add to your project's package.json
 
-```
-{
-  "dependencies": {
-    "zuid": "git+ssh://git@github.com:zesty-io/zuid-js.git#master"
+  ```
+  {
+    "dependencies": {
+      "zuid": "git+ssh://git@github.com:zesty-io/zuid-js.git#master"
+    }
   }
-}
-```
+  ```
 
 2. Install
 
-```
-npm install
-```
+  ```
+  npm install
+  ```
 
 3. Add to your file
 
-```javascript
-const Zuid = require('zuid')
-
-// Generate a ZUID
-const newZuidForMediaItem = Zuid.generate(Zuid.prefix.MEDIA_FILE)
-```
+  ```javascript
+  const Zuid = require('zuid')
+  
+  // Generate a ZUID
+  const newZuidForMediaItem = Zuid.generate(Zuid.prefix.MEDIA_FILE)
+  ```
 
