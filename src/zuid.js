@@ -49,4 +49,6 @@ Zuid.prefix = {
 
 };
 
-module.exports = Zuid
+if( typeof module !== 'undefined' && module.exports ) {
+    module.exports = Zuid;
+}
