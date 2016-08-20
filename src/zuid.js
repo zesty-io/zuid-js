@@ -58,7 +58,8 @@ Zuid.prefix = {
   // Media Service
   MEDIA_BIN: 1,
   MEDIA_FOLDER: 2,
-  MEDIA_FILE: 3
+  MEDIA_FILE: 3,
+  MEDIA_FILE_MODIFIED: 4
 
 };
 
