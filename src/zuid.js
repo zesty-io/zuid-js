@@ -22,8 +22,8 @@ var Zuid = {
    */
   generate: function generate(assetNum) {
 
-    // Part one: a numeric id encoded as hexadecimal
-    var part1 = assetNum.toString(16);
+    // Part one: a numeric id
+    var part1 = assetNum;
 
     // Part two: A timestamp in hexadecimal. We'll subtract January 1st, 2015 (in seconds) from now to make this hash shorter
     var part2 = Math.floor((Date.now() / 1000) - 1420070400).toString(16);
