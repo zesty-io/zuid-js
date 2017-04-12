@@ -11,16 +11,26 @@ if (!Date.now) {
  * Zuid Generator Service
  *
  * Not to be confused with a "zid", a "zuid" is a zesty-platform-wide unique ID.
+ *
+ * See https://github.com/zesty-io/zuid-specification
  */
 var Zuid = {
 
+  chars: 'bcdfghjklmnpqrstvwxz0123456789',
+  
   /**
    * Generate a zesty unique identifier
    *
    * @param assetNum
    * @returns {string}
    */
-  generate: function generate(assetNum) {
+  generate: function generate(assetNum, randomHashLength) {
+    
+    randomHashLength = randomHashLength || 6;
+    
+    if (randomHashLength < 5 || randomHashLength > 15) {
+      throw new Error('randomHashLength must be between 5 and 15');
+    }
 
     // Part one: a numeric id
     var part1 = assetNum;
@@ -29,7 +39,11 @@ var Zuid = {
     var part2 = Math.floor((Date.now() / 1000) - 1420070400).toString(16);
 
     // Part three: a random, 5-character, alphanumeric string (lowercase only)
-    var part3 = Math.random().toString(36).substr(2, 5);
+    var part3 = '';
+    
+    for (var i = 1;i <= randomHashLength; i++) {
+      part3 += Zuid.chars[Math.floor(Math.random() * Zuid.chars.length)]
+    }
 
     // We'll combine the 3 with hyphens in between
     return part1 + '-' + part2 + '-' + part3;
@@ -45,7 +59,7 @@ var Zuid = {
   matches: function matches(zuid, assetNum) {
     var zuidParts = zuid.split('-');
 
-    return ((zuidParts[0] || '') === parseInt(assetNum).toString(16));
+    return ((zuidParts[0] || '') == assetNum);
   }
 
 };
