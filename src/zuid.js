@@ -65,16 +65,16 @@ var Zuid = {
 };
 
 Zuid.prefix = {
+    "USER": 5,
 
-  // Sites
-  SITE: 0,
-
-  // Media Service
-  MEDIA_BIN: 1,
-  MEDIA_FOLDER: 2,
-  MEDIA_FILE: 3,
-  MEDIA_FILE_MODIFIED: 4
-
+    "SITE": 0,
+    "SET": 6,
+    "SET_ITEM": 7,
+    
+    "MEDIA_BIN": 1,
+    "MEDIA_FOLDER": 2,
+    "MEDIA_FILE": 3,
+    "MEDIA_FILE_MODIFIED": 4
 };
 
 if (typeof module !== 'undefined' && module.exports) {
