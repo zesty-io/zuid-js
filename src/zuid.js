@@ -64,18 +64,30 @@ var Zuid = {
 
 };
 
-Zuid.prefix = {
-    "USER": 5,
+// -----------------------------------------------------------------------------------------
+// START OF AUTOMATICALLY UPDATED PREFIXES (DO NOT REMOVE THIS LINE)
 
-    "SITE": 0,
-    "SET": 6,
-    "SET_ITEM": 7,
-    
-    "MEDIA_BIN": 1,
-    "MEDIA_FOLDER": 2,
-    "MEDIA_FILE": 3,
-    "MEDIA_FILE_MODIFIED": 4
-};
+Zuid.prefix = {
+  "RESOURCE": 0,
+  "USER": 5,
+
+  "SITE": 8,
+  "SITE_CONTENT_SET": 6,
+  "SITE_CONTENT_ITEM": 7,
+  "SITE_CONTENT_ITEM_VERSION": 13,
+  "SITE_VIEW": 9,
+  "SITE_RESOURCE": 10,
+  "SITE_STYLE_VARIABLE": 11,
+  "SITE_FIELD": 12,
+
+  "MEDIA_BIN": 1,
+  "MEDIA_FOLDER": 2,
+  "MEDIA_FILE": 3,
+  "MEDIA_FILE_MODIFIED": 4
+}
+
+// END OF AUTOMATICALLY UPDATED PREFIXES (DO NOT REMOVE THIS LINE)
+// -----------------------------------------------------------------------------------------
 
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = Zuid;
