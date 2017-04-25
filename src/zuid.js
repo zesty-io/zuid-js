@@ -60,6 +60,18 @@ var Zuid = {
     var zuidParts = zuid.split('-');
 
     return ((zuidParts[0] || '') == assetNum);
+  },
+  
+  isValid: function isValid(zuid) {
+    if (typeof zuid !== typeof '') {
+      return false;
+    }
+    
+    if (zuid.length < 5 || zuid.length > 50) {
+      return false;
+    }
+    
+    return zuid.match(/^(([0-9]+)-([a-f0-9]+)-([a-z0-9]+))$/)
   }
 
 };
