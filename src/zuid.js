@@ -92,6 +92,8 @@ Zuid.prefix = {
   "SITE_STYLE_VARIABLE": 11,
   "SITE_FIELD": 12,
   "SITE_BLUEPRINT": 14,
+  "SITE_REDIRECT": 16,
+  "SITE_LINK": 17,
 
   "MEDIA_BIN": 1,
   "MEDIA_FOLDER": 2,
