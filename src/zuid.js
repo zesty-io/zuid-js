@@ -1,76 +1,71 @@
 'use strict';
 
-// Date.now() polyfill
-if (!Date.now) {
-  Date.now = function() {
-    return new Date().getTime();
-  }
-}
+const NS_PER_SEC = 1e9;
 
 /**
- * Zuid Generator Service
- *
+ * Zuid Generator
  * Not to be confused with a "zid", a "zuid" is a zesty-platform-wide unique ID.
  *
- * See https://github.com/zesty-io/zuid-specification
+ * @see https://github.com/zesty-io/zuid-specification
  */
 var Zuid = {
 
   chars: 'bcdfghjklmnpqrstvwxz0123456789',
-  
+
   /**
    * Generate a zesty unique identifier
    *
-   * @param assetNum
+   * @param prefix
    * @returns {string}
    */
-  generate: function generate(assetNum, randomHashLength) {
-    
-    randomHashLength = randomHashLength || 6;
-    
-    if (randomHashLength < 5 || randomHashLength > 15) {
-      throw new Error('randomHashLength must be between 5 and 15');
+  generate: function generate(prefix, size) {
+    size = size || 6;
+    if (size < 6 || size > 35) {
+      throw new Error('Suffix length must be between 6 and 35');
     }
 
     // Part one: a numeric id
-    var part1 = assetNum;
+    var part1 = prefix;
 
-    // Part two: A timestamp in hexadecimal. We'll subtract January 1st, 2015 (in seconds) from now to make this hash shorter
-    var part2 = Math.floor((Date.now() / 1000) - 1420070400).toString(16);
+    // Part two: A nano second timestamp in hexadecimal.
+    const time = process.hrtime()
+    const ns = time[0] * NS_PER_SEC + time[1]
+    const hex = Number(ns).toString(16)
+    const begin = hex.length - 10
+    const end = hex.length
+    const hash = hex.slice(begin, end)
+    var part2 = hash
 
-    // Part three: a random, 5-character, alphanumeric string (lowercase only)
+    // Part three: a random alphanumeric string (lowercase only)
     var part3 = '';
-    
-    for (var i = 1;i <= randomHashLength; i++) {
+    for (var i = 1;i <= size; i++) {
       part3 += Zuid.chars[Math.floor(Math.random() * Zuid.chars.length)]
     }
 
     // We'll combine the 3 with hyphens in between
     return part1 + '-' + part2 + '-' + part3;
-
   },
 
   /**
    * Check if a Zuid matches a certain asset prefix
    *
    * @param {string} zuid
-   * @param {string|int} assetNum
+   * @param {string|int} prefix
    */
-  matches: function matches(zuid, assetNum) {
+  matches: function matches(zuid, prefix) {
     var zuidParts = zuid.split('-');
-
-    return ((zuidParts[0] || '') == assetNum);
+    return ((zuidParts[0] || '') == prefix);
   },
-  
+
   isValid: function isValid(zuid) {
     if (typeof zuid !== typeof '') {
       return false;
     }
-    
+
     if (zuid.length < 5 || zuid.length > 50) {
       return false;
     }
-    
+
     return zuid.match(/^(([0-9]+)-([a-f0-9]+)-([a-z0-9]+))$/)
   }
 
@@ -108,6 +103,4 @@ Zuid.prefix = {
 // END OF AUTOMATICALLY UPDATED PREFIXES (DO NOT REMOVE THIS LINE)
 // -----------------------------------------------------------------------------------------
 
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = Zuid;
-}
+module.exports = Zuid;
