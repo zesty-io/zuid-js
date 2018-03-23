@@ -1,10 +1,10 @@
 {
   "name": "zuid",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "Library for generating Zesty platform guids, \"zuids\"",
   "main": "src/zuid.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/tap src/zuid.spec.js -Rspec --cov"
   },
   "repository": {
     "type": "git",
@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/zesty-io/zuid-js/issues"
   },
-  "homepage": "https://github.com/zesty-io/zuid-js#readme"
+  "homepage": "https://github.com/zesty-io/zuid-js#readme",
+  "devDependencies": {
+    "tap": "11.1.3"
+  }
 }
