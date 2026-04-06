@@ -35,6 +35,20 @@ tap.test('generate', (t) => {
 		t.end()
 	})
 
+	t.test('part 3 only contains allowed alphanumeric characters', (t) => {
+		const zuid = Zuid.generate(8)
+		const part3 = zuid.split('-')[2]
+		const allowed = part3.split('').every((char) => Zuid.chars.includes(char))
+
+		if (allowed) {
+			t.pass('Component 3 contains only allowed characters')
+		} else {
+			t.fail('Component 3 contains disallowed characters')
+		}
+
+		t.end()
+	})
+
 	t.test('zuids are unique', (t) => {
 		zuid1 = Zuid.generate(8)
 		zuid2 = Zuid.generate(8)
