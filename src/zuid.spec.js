@@ -7,7 +7,7 @@ tap.test('generate', (t) => {
 		const parts = zuid.split('-')
 
 		if (Number(parts[0])) {
-				t.pass('Component 1 should be a number')
+			t.pass('Component 1 should be a number')
 		}
 
 		t.throws(() => {
